@@ -1,3 +1,4 @@
+@require: proof
 @require: itemize
 @require: stdjareport
 
@@ -112,6 +113,51 @@ document (|
 +chapter?:(`proofsAsInferences`){証明: もっともシミュレートしやすい推論}<
 
 %この章では数学の証明を例に最少命題論理の含意断片を紹介する。
+
++p{
+とくに数学の証明という推論を取り上げる。
+}
++p{
+数学の定理はつぎのようなかたちをしている: 
+「条件${\alpha} ならば結論${\beta} 」。
+その証明は、
+「条件${\alpha} なので中間命題${\gamma_1} なので${\ldots} なので中間命題${\gamma_n} なので結論${\beta} 」というかたちをもつ。
+}
+
++p{
+つぎのような例から考えよう。
+}
+
++p{
+三角形${ABC}について、
+角${A}と角${B}の和が直角なので角${C}が直角である、
+という推論を形式的に表すとつぎのようになる。
+}
++math(${
+  \derive![${\angle A + \angle B = \frac{\pi}{2}}]
+    {\angle C = \frac{\pi}{2}}
+}
+); 
+
++p{
+この推論から定理を導こう。
+}
+
++math(${
+  \derive![
+    ${\derive![${\angle A + \angle B = \frac{\pi}{2}}]{\angle C = \frac{\pi}{2}}}]
+    {\angle A + \angle B = \frac{\pi}{2} \to \angle C = \frac{\pi}{2}} 
+});
+
++p{
+ここでは、
+横棒が「なので」をシミュレートしており、
+${\to} が「ならば」をシミュレートしている\footnote{暗黙裡に以後も強調するが、「なので」と「ならば」の区別は重要である。}。
+}
+
+>
+
++chapter?:(`rulesForImplication`){${\to} の導入規則と除去規則}<
 
 
 
