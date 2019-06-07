@@ -24,7 +24,8 @@ document (|
 
 +p{
 「記号論理学」という名称は、
-伝統論理と呼ばれる記号的でない論理学との区別を強調したものである。
+伝統論理と呼ばれる記号的でない論理学との区別を強調したものであり、
+文学部で開講されるときによく用いられる\footnote{\href(`http://www.l.chiba-u.ac.jp/students/syllabus/2008/316.html`){http://www.l.chiba-u.ac.jp/students/syllabus/2008/316.html}より千葉大学文学部での開講を確認できる(最終閲覧日、2019年6月7日)}。。
 }
 
 +p{
@@ -32,7 +33,7 @@ document (|
 「大学の数学を学ぶために、集合や論理の記法や使い方に慣れる」という\dfn{科目名}という場合と、
 公理的集合論をはじめとする数学の根本に関係する\dfn{分野名}という場合とがある。
 たとえば、前者について、
-東京理科大学の数学科では「論理と集合 (Logic and Sets) 」という名称で開講されているようである\footnote{\href(`https://www.tus.ac.jp/fac_grad/syllabus/`){東京理科大学のシラバス検索}より検索可能である。}。
+東京理科大学の数学科では「論理と集合 (Logic and Sets) 」という名称で開講されているようである\footnote{\href(`https://www.tus.ac.jp/fac_grad/syllabus/`){https://www.tus.ac.jp/fac_grad/syllabus/}より検索可能である。}。
 }
 
 +p{
@@ -43,7 +44,7 @@ document (|
 ハードウェアの根幹は論理回路であり、
 その基本的な理論と設計方法を工学部では学ぶのである。
 実際、
-京都産業大学の工学部で「論理回路」という科目が開講されている\footnote{cf. \href(`https://www.kyoto-su.ac.jp/campus/syllabus/2010/pdf/web_eng.pdf`){京都産業大学: 平成22年度工学部講義要項}, 最終閲覧日2019年5月27日。}。
+京都産業大学の工学部で「論理回路」という科目が開講されている\footnote{cf. \href(`https://www.kyoto-su.ac.jp/campus/syllabus/2010/pdf/web_eng.pdf`){https://www.kyoto-su.ac.jp/campus/syllabus/2010/pdf/web_eng.pdf}, 最終閲覧日2019年5月27日。}。
 }
 
 +p{
