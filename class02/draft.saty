@@ -1,0 +1,22 @@
+@require: proof
+@require: itemize
+@require: stdjareport
+
+document (|
+  title = {論理学からはじめる数学: 第2講レジュメ};
+  author = {川井 新};
+|) '<
+
++chapter?:(`rules`){導入規則と除去規則} <
+
+>
+
++chapter?:(`references`){References} <
++listing{
+* 田中俊一『位相と論理』、日本評論社、2000年
+* 戸次大介『数理論理学』、東京大学出版会、2012年
+* 矢田部俊介「論理学上級」、京都大学講義
+}
+>
+
+>
