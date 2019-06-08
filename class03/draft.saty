@@ -1,0 +1,37 @@
+@require: proof
+@require: itemize
+@require: stdjareport
+
+document (|
+  title = {論理学からはじめる数学: 第3講レジュメ};
+  author = {川井 新};
+|) '<
+
++chapter?:(`redex`){遠回りな証明} <
+
+>
+
++chapter?:(`normalizedProof`){正規な証明}<
+% 証明図の効率的な作り方
+
+>
+
++chapter?:(`subformulaProperty`){部分論理式原理}<
+% 要る？
+
+>
+
++chapter?:(`normalization`){正規化定理、そのインフォーマルな証明}<
+
+>
+
+
++chapter?:(`references`){References} <
++listing{
+* 古森・小野『現代数理論理学序説』、日本評論社、2010年
+* 戸次大介『数理論理学』、東京大学出版会、2012年
+* 矢田部俊介「論理学上級」、京都大学講義
+}
+>
+
+>
