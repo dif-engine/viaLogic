@@ -11,6 +11,26 @@ document (|
 
 >
 
++chapter?:(`toI`){${\to} の導入規則}<
+
+>
+
++chapter?:(`discharging`){仮定のdischarge}<
+
+>
+
++chapter?:(`toE`){${\to} の除去規則}<
+
+>
+
++chapter?:(`prooftree`){証明木の定義と具体例}<
+
+>
+
++chapter?:(`dischargningInPractices`){複数の仮定のdischargeと0個の仮定のdischarge}<
+
+>
+
 +chapter?:(`references`){References} <
 +listing{
 * 古森・小野『現代数理論理学序説』、日本評論社、2010年
