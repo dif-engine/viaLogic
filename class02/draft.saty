@@ -8,26 +8,51 @@ document (|
 |) '<
 
 +chapter?:(`rules`){導入規則と除去規則} <
+% class01を踏まえて導入規則と除去規則があることを説明
+
+% 演繹定理に触れる？
 
 >
 
 +chapter?:(`toI`){${\to} の導入規則}<
 
++p{
+  前節までの議論を踏まえ、
+  「ならば」をシミュレートする${\to} にかんする導入規則を定める。
+}
+
 >
 
 +chapter?:(`discharging`){仮定のdischarge}<
 
++p{
+  ${\to} の導入規則が意味するところは、
+  ${\alpha} から${\beta} を推論できたら
+  それをまとめて${\alpha \to \beta} の証明があるとする、
+  ということである。
+}
+
+% dischargeの説回明
+
+% 「ラベル」をつけることでラムダ項の導入
+
 >
 
 +chapter?:(`toE`){${\to} の除去規則}<
+% modus ponensと触れる？
 
 >
 
 +chapter?:(`prooftree`){証明木の定義と具体例}<
+% ここではじめて証明木の定義をきちんと述べる。
 
 >
 
 +chapter?:(`dischargningInPractices`){複数の仮定のdischargeと0個の仮定のdischarge}<
+
+% 縮約規則と割増規則との対応
+
+% あと順番、つまり交換規則
 
 >
 
