@@ -101,23 +101,20 @@ ${\to} の\dfn{除去規則} という。
 以下に具体例を示す。
 }
 
-+math(
-   ${\derive![
-      ${\derive![
-        ${\derive![
-              ${\derive![
-                ${\alpha \to \beta}; ${\alpha}
-              ]
-                {\beta \to \gamma}};
-              ${\derive![
-                  ${\alpha \to \beta}; ${\alpha}  
-              ] 
-                {\beta}
-               }
-        ] {\alpha \to \gamma}
-        }
-     ]
-    {\paren{\alpha \to \beta} \to \alpha \to \gamma}}
++math(${
+  \derive![
+    ${\derive![
+       ${\derive![
+         ${\derive![
+            ${\derive![
+              ${\alpha \to \beta \to \gamma}; ${\alpha}
+            ] {\beta \to \gamma}};
+            ${\derive![
+              ${\alpha \to \beta}; ${\alpha}
+            ] {\beta}}
+         ] {\gamma}}
+       ] {\alpha \to \gamma}}
+    ] {\paren{\alpha \to \beta} \to \alpha \to \gamma}}
   ]
 {\paren{\alpha \to \beta \to \gamma} \to \paren{\alpha \to \beta} \to \alpha \to \gamma}
 });
