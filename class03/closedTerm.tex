@@ -1,0 +1,43 @@
+\documentclass[fleqn]{jsarticle}
+\title{ラムダ項}
+\author{川井新}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\newtheorem{defi}{Definition}
+
+\begin{document}
+\maketitle
+
+
+\begin{defi}
+ラムダ項のフォーマルな定義は以下で与えられる:
+  \begin{enumerate}
+    \item 変数$x, y, z \ldots$はラムダ項である。
+    \item $M$と$N$がラムダ項なら、$(MN)$はラムダ項である。
+    \item $M$がラムダ項で$x$が変数なら、$(\lambda x. M)$はラムダ項である。
+    \item 以上でわかるものだけがラムダ項である。
+  \end{enumerate}
+\end{defi}
+
+この定義では、 (1) でもっとも簡単なラムダ項を与え
+(2) - (3) でこれらから新しいラムダ項を作り出す規則を与えている。
+このような定義を帰納的定義という。
+
+ある表現のなかに同じ記号が複数回現れるとき、
+その現れる場所を含めて指定し区別したいことがある。
+場所を含めた指定を、出現 (occurrnce) という。
+たとえば、$x (\lambda x .(\lambda y. (xz)))$には
+変数$x$の出現は3回あり、$z$の出現は1回である。
+
+ラムダ項$Q$のなかのラムダ項$\lambda x. M$の出現で、
+この$M$の出現を$\lambda x$の作用域 (scope) という。
+
+ラムダ項$Q$のなかの変数$x$の出現が束縛された (bound) 出現であるとは、
+その出現が$\lambda x$の作用域か$\lambda x$のなかにあること。
+束縛されていない変数の出現を自由な (free) 出現という。
+
+すべての変数の出現が束縛されているラムダ項を閉項 (closed term) という。
+
+\end{document}
+
