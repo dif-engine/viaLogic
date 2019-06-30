@@ -1,0 +1,93 @@
+\documentclass[fleqn]{jsarticle}
+\title{論理学からはじめる数学: 第3講}
+\author{川井新}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\newtheorem{theo}{Theorem}
+\newtheorem{defi}{Definition}
+
+\begin{document}
+\maketitle
+
+\section{証明の掟}
+
+数学の証明の掟: 証明で用いた条件を定理内で明示せよ
+
+証明図の掟: 木のいちばん上の式 (仮定) はすべて落とされなければならない。
+
+
+証明図が掟を守っているのか一見、わかりにくい。
+そこで仮定の式に文字$x, y, z, \ldots$を用いてラベルを付け、
+以下のように規則にラベルの使い方もハンドルする。
+
+%tableOfRulesWithTerm
+
+
+このとき、
+掟を守ったラベルと掟を破ったラベルを性格づけられる。
+
+
+\section{ラムダ項} 
+
+ラベルの正体は、
+ラムダ項である。
+
+%accountsOfLambdaTerm
+
+\begin{defi}
+ラムダ項のフォーマルな定義は以下で与えられる:
+  \begin{enumerate}
+    \item 変数$x, y, z \ldots$はラムダ項である。
+    \item $M$と$N$がラムダ項なら、$(MN)$はラムダ項である (「適用」) 。
+    \item $M$がラムダ項で$x$が変数なら、$(\lambda x. M)$はラムダ項である (「抽象」) 。
+    \item 以上でわかるものだけがラムダ項である。
+  \end{enumerate}
+\end{defi}
+
+この定義では、 (1) でもっとも簡単なラムダ項を与え、
+(2) - (3) でこれらから新しいラムダ項を作り出す規則を与えている。
+このような定義を帰納的定義という。
+
+適用 (application) が除去規則に、
+抽象 (abstraction) が導入規則に対応する。
+
+ある表現のなかに同じ記号が複数回現れるとき、
+その現れる場所を含めて指定し区別したいことがある。
+場所を含めた指定を、出現 (occurrnce) という。
+たとえば、$x (\lambda x .(\lambda y. (xz)))$には
+変数$x$の出現は3回あり、$z$の出現は1回である。
+
+ラムダ項$Q$のなかのラムダ項$\lambda x. M$の出現で、
+この$M$の出現を$\lambda x$の作用域 (scope) という。
+
+ラムダ項$Q$のなかの変数$x$の出現が束縛された (bound) 出現であるとは、
+その出現が$\lambda x$の作用域か$\lambda x$のなかにあること。
+束縛されていない変数の出現を自由な (free) 出現という。
+
+すべての変数の出現が束縛されているラムダ項を閉項 (closed term) という。
+
+
+\section{閉項と証明図}
+
+
+\section{証明図の正規化定理のインフォーマルな紹介}
+
+補題ok性: 補題を使って証明していいのは、そのとき直接証明が可能であるから。
+
+このことをわれわれは、日常の数学で用いている。
+
+%変換
+
+%シミュレーションレベルでの補題ok性
+
+\begin{theo}[正規化定理]
+ どんな証明図も正規な証明図に、決められたアルゴリズムで書き換えられる。
+\end{theo}
+
+\section{証明図の書き方}
+
+
+\section{正規な証明図の性質、ありがたみ}
+\end{document}
+
