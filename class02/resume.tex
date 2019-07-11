@@ -1,0 +1,160 @@
+\documentclass[fleqn]{jsarticle}
+\title{論理学からはじめる数学: 第2講}
+\author{川井新}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{bussproofs}
+\newtheorem{theo}{定理}
+\newtheorem{defi}{定義}
+\newtheorem{exer}{演習}
+
+\begin{document}
+\maketitle
+
+\section*{推論規則と論理結合子の使われ方}
+
+前回、証明と定理の関係として、
+「条件$\alpha$から結論$\beta$に至る推論があれば、
+定理「$\alpha$ならば$\beta$」にかんする証明があることになる」と、
+数学に置ける「ならば」の使用例を考察した。
+われわれはいったん、
+インフォーマルに$\to$という記号を導入して、
+$\to$が自然言語の「ならば」をシミュレートしているとした。
+
+今回は、
+$\to$にかんする\textgt{導入規則}と\textgt{除去規則}という規則を紹介して、
+この「ならば」をシミュレートする$\to$の使われ方を確認する。
+
+
+\section{$\to$の導入規則と除去規則}
+
+$\to$は仮定 (前提、条件) から結論を導出したとき、
+仮定と結論を結びつける役割をもつ。
+
+\begin{prooftree}
+  \AxiomC{$\alpha$}
+  \UnaryInfC{$\cdots$}
+  \UnaryInfC{$\beta$}
+  \UnaryInfC{$\alpha \to \beta$}
+\end{prooftree}
+
+$\cdots$は途中の推論の省略である。
+この規則は、
+$\alpha$と$\beta$の間に新しく$\to$記号を導入するので、
+$\to$の\textgt{導入規則} (introduction rule) と呼ばれる。
+
+$\to$の導入規則は、
+「仮定$\alpha$から結論$\beta$に至る推論があれば、
+定理$\alpha \to \beta$を主張してよい」
+と、数学における推論のシミュレーションになっている。
+ところで数学の「ならば」にかかわる推論には、
+「$\alpha$ならば$\beta$が成立しているもとで$\alpha$も成立しているとき、
+$\beta$を主張してよい」
+という約束もある。
+
+これをシミュレーションの水準で規則にすると、以下のようになる。
+
+\begin{prooftree}
+  \AxiomC{$\alpha \to \beta$}
+  \AxiomC{$\alpha$}
+  \BinaryInfC{$\beta$}
+\end{prooftree}
+
+この規則は、
+いままで記号$\to$を含んでいた論理式から記号$\to$を除去する規則なので、
+$\to$の\textgt{除去規則} (elimination rule) と呼ばれる。
+
+この二つの規則のみからなる体系を
+\textgt{最小命題論理の含意断片}という。
+「含意断片」の意味するところは、
+最小命題論理という体系の中でも論理結合子として含意$\to$しか持たない体系ということである。
+のちのち、
+この体系に新しい論理結合子を付け加える。
+
+
+\section{推論図}
+
+規則を有限の木状に並べた図形・表現を
+\textgt{推論図} (deduction) という。
+推論図が推論をシミュレートしたものである。
+
+以下に具体例を示す。
+
+\begin{prooftree}
+  \AxiomC{$\alpha \to \beta \to \gamma$}
+  \AxiomC{$\alpha$}
+  \BinaryInfC{$\beta \to \gamma$}
+  \AxiomC{$\alpha \to \beta$}
+  \AxiomC{$\alpha$}
+  \BinaryInfC{$\beta$}
+  \BinaryInfC{$\gamma$}
+  \UnaryInfC{$\alpha \to \gamma$}
+  \UnaryInfC{$(\alpha \to \beta) \to \alpha \to \gamma$}
+  \UnaryInfC{$(\alpha \to \beta \to \gamma) \to (\alpha \to \beta) \to \alpha \to \gamma$}
+\end{prooftree}
+
+ここで用語を整理しておこう。
+木の一番上の論理式を推論図の\textgt{仮定} (assumption) といい、
+一番下の論理式を推論図の\textgt{結論}という。
+上の証明図を例にとると、
+$\alpha \to \beta$と$\beta \to \gamma$と$\alpha$が仮定であり、
+$(\alpha \to \beta \to \gamma) \to (\alpha \to \beta) \to \alpha \to \gamma$が
+結論である。
+また、
+結論$\delta$に至る推論図のことを
+\textgt{$\delta$に至る推論図}などという。
+
+なお、
+論理式の括弧は右から補う。
+つまり、
+$(\alpha \to \beta \to \gamma) \to (\alpha \to \beta) \to \alpha \to \gamma$
+は、
+$((\alpha \to (\beta \to \gamma)) \to ((\alpha \to \beta) \to (\alpha \to \gamma)))$
+の括弧を省略したものである\footnote{以降、論理式の括弧を補うことはいい練習になるだろう。}。
+
+\section{仮定のdischarge}
+
+$\to$の導入規則が意味するところは、
+$\alpha$から$\beta$を推論できたら
+それをまとめて$\alpha \to \beta$にかんする証明があるとする、
+ということであった。
+すなわち、
+「$\alpha$から$\beta$が推論された」ことから$\alpha \to beta$を推論するとき、
+$\alpha$を仮定として扱わない、ということである。
+
+このように$\alpha$が導入規則出なくなったことを
+「$\alpha$が落ちる (discharged) 」という\footnote{これを「キャンセル」(矢田部)や「打ち消し」 (戸次) という人もいる。}。
+
+仮定が複数あるばあい、
+導入規則の適用順序は問われない。
+講義では実際の推論図を使って説明する。
+
+複数の仮定は、
+同時に落とされる。
+前節の推論図を例にとると、
+$\alpha$が仮定としてふたつ出現しているが、
+最初の導入規則の適用の際に同時に落とされている。
+
+また、0個の仮定を落とすこともできる。
+仮定に出ていない論理式を新しい仮定として使っていいということである。
+これは「余計な仮定を増やしても証明可能である」ことのシミュレートである。
+以下の推論図がその例である。
+
+\begin{prooftree}
+  \AxiomC{$\alpha$}
+  \UnaryInfC{$\beta \to \alpha$}
+  \UnaryInfC{$\alpha \to \beta \to \alpha$}
+\end{prooftree}
+
+\begin{thebibliography}{99}
+  \bibitem{Pra1965} D. Prawitz, Natural Deduction, Dover, 1965
+  \bibitem{Genron} 古森・小野『現代数理論理学序説』、日本評論社、2010年
+  \bibitem{LandC} 萩谷・西崎『論理と計算のしくみ』、岩波、2007年
+  \bibitem{bekki2012} 戸次大介『数理論理学』、東京大学出版会、2012年
+  \bibitem{CAPE} 矢田部俊介「論理学上級」、京都大学講義
+\end{thebibliography}
+
+\end{document}
+
