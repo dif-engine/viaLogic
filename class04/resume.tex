@@ -1,0 +1,259 @@
+\documentclass[fleqn]{jsarticle}
+\title{論理学からはじめる数学: 第4講}
+\author{川井新}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage{bussproofs}
+\newtheorem{theo}{定理}
+\newtheorem{defi}{定義}
+\newtheorem{exer}{演習}
+
+\begin{document}
+\maketitle
+
+\section{簡約と計算}
+
+式の一部をいっそう簡単な式に置き換える操作を\textgt{簡約}という。
+たとえば、$1+2$という式を$3$という式で置き換えることは簡約である。
+また、$f(x)=x^2+3x+4$という関数定義があったとき、
+$f(3)$に対して、
+関数$f$の定義を展開して$3^2+3 \cdot 3 +4$という式で置き換えることも簡約である。
+この式のなかで簡約を繰り返すと以下のようになる。
+
+\begin{align*}
+  f(1+2) &= (1+2)^2 + 3 \cdot (1+2) + 4\\
+         &= 3^2 + 3 \cdot 3 + 4\\
+         &= 9 + 9 + 4\\
+         &= 22
+\end{align*}
+
+一般に簡約を繰り返すことで、
+式の値を求めることができる。
+
+ラムダ計算は、
+関数の計算についての理論である。
+そのなかで、
+基本的な概念は関数であり、
+すべてのものは関数として表現され、
+計算は簡約により定義される。
+
+ラムダ計算に踏み入る前にすこし予備考察をしよう。
+
+\section{再帰}
+
+$x$の階乗を計算する関数$f(x) = x!$は再帰的に定義できる。
+
+\begin{gather*}
+  fact(0) = 1\\
+  fact(x+1) = x \cdot fact(x)
+\end{gather*}
+
+この定義は、
+そのまま$f(x)$の値を求めるために用いることができる。
+
+\begin{align*}
+  fact(3) &= 3 \cdot fact(2)\\
+          &= 3 \cdot (2 \cdot fact(1))\\
+          &= 3 \cdot (2 \cdot (1 \cdot fact(0)))\\
+          &= 3 \cdot (2 \cdot (1 \cdot 1))\\
+          &= \cdots\\
+          &= 6
+\end{align*}
+
+
+
+\section{ラムダ式}
+
+つぎのように義される関数$twice(f,x)$を考える。
+\[
+  twice(f,x) = f(f(x))
+\]
+
+$twice$の最初の引数$f$はひとつの引数をもつ関数である。
+
+\begin{align*}
+  twice(fact , 3) &= fact (fact (3))\\
+                  &= fact(6)\\
+                  &= 720
+\end{align*}
+
+$twice$を用いて${2^2}^3$を計算するには、
+$exp2(x) = 2^x$という関数$exp2$を準備し、
+$twice( exp2 , 3 )$を計算する。
+しかし、使い捨ての関数をそのつど定義するのも手間であり、
+名前不足にもなる。
+このばあい、
+「$x$に$2^x$を対応させる関数」を直接に表す記法があったほうが
+便利で自然である。
+そのような記法が\textgt{ラムダ式}である。
+
+$x$に$2^x$を対応させる関数は、
+\[ \lambda (x) 2^x \]
+というラムダ式によって表すことができる。
+
+$twice( \lambda (x) 2^x , 3)$の値を求めよう。
+
+\begin{align*}
+  twice( \lambda (x) 2^x ) &= ( \lambda (x) 2^x ( \lambda (x) 2^x )(3))\\
+                           &= ( \lambda (x) 2^x ) (2^3)\\
+                           &= ( \lambda (x) 2^x ) (8)\\
+                           &= 2^8\\
+                           &= 256
+\end{align*}
+
+関数$add$を$add (x) = \lambda (y) x+y$と定義する。
+$add$は$x$に$\lambda (y) x+y$という関数を対応させる関数である。
+
+\begin{align*}
+  (add(3))(4) &= ( \lambda (y) 3 + y)(4)\\
+              &= 3 + 4\\
+              &= 7
+\end{align*}
+
+一般に、二引数の関数$f(x,y)$に対して、
+関数$g$を$g(x) = \lambda (y) f(x,y)$と定義する。
+$g$は一引数関数であり、
+引数に適用されると一引数関数が求まるようなものである。
+このような関数$g$を$f$の\textgt{カリー化された関数} (curried function) という。
+カリー化を用いると、
+二引数の関数を、したがって、$n$引数 ($n$は二以上の自然数) の関数を
+一引数の関数だけで表現できる。
+したがって、
+基礎概念として採用する関数は一引数の関数でよさそうである。
+
+\section{ラムダ項}
+
+
+ラムダ項の定義を思い出そう。
+
+\begin{enumerate}
+    \item 変数$x, y, z \ldots$はラムダ項である。
+    \item $M$と$N$がラムダ項なら、$(MN)$はラムダ項である (「適用」) 。
+    \item $M$がラムダ項で$x$が変数なら、$(\lambda x. M)$はラムダ項である (「抽象」) 。
+\end{enumerate}
+
+ラムダ項はラムダ式にしたがってつぎのように読める。
+
+\begin{center}
+  \begin{tabular}{c|c}
+   ラムダ式      & ラムダ項\\ \hline
+   $\lambda (x)$ & $\lambda x.$\\
+   $M(N)$        & $MN$
+  \end{tabular}
+\end{center}
+
+
+$\lambda x. 2^x$などのなかの$x$は$\sum_{i=0}^{10} i(i-1)$の$i$や
+$\int_0^{\pi} \sin x dx$の$x$と同じように文字を入れ替えても
+式の意味・役割は変わらない。
+束縛変数を置き換えてうつる構文上の合同関係を$\alpha$-同値という。
+ふたつのラムダ項$M$と$N$とが$\alpha$-同値であることを
+$M =_{\alpha} N$と表す。
+たとえば、$\lambda x.fxz =_{\alpha} \lambda y.fyz$である。
+ 
+$M$内の$x$の出現にラムダ項$N$に代入したものを
+$M[x \coloneqq N]$とかく。
+単純なばあいには、
+$M$の中の$x$をすべて$N$に置き換えれば代入を得られる。
+\underline{代入は束縛関係を保つ}必要があり、
+一般のばあいは以下のように帰納的に定義される。
+
+
+\begin{defi}
+代入を帰納的に定義する:
+
+\begin{enumerate}
+  \item $x[x \coloneqq N] \equiv N$
+  \item $N[x \coloneqq N] \equiv M$ ($x$が$M$に自由に出現しないとき)
+  \item $(QR)[ x \coloneqq N] \equiv (Q[x \coloneqq N] R[x \coloneqq N])$
+  \item $( \lambda y.Q)[x \coloneqq N] \equiv \lambda y.Q[x \coloneqq N ]$ ($y$が$N$に自由に出現しないとき)
+  \item $(\lambda y.Q)[x \coloneqq N] \equiv \lambda z.Q[y \coloneqq z][x \coloneqq N]$ (ここで$z$は$N(\lambda xy.Q)$に出現しない変数)
+\end{enumerate}
+\end{defi}
+
+\section{$\beta$-簡約}
+
+ラムダ式$(\lambda (x) 2^x)(3)$は、
+$2^3$に等しいと考えらて置き換えられ、
+さらに簡単な式である$8$に置き換えられた。
+ラムダ項についてもラムダ計算では$(\lambda x.M)N$というラムダ項を
+ラムダ項$M[x \coloneqq N]$に等しいと考える。
+この書き換えを\textgt{$\beta$-簡約} ($\beta$-reduction) という。
+
+$\beta$-簡約は、
+つぎの四つの規則から導かれるラムダ項の間の二項関係として、
+帰納的に定義できる。
+
+\begin{center}
+  \begin{tabular}{cccc}
+   \multicolumn{3}{c}{
+   \AxiomC{}
+   \RightLabel{Beta}
+   \UnaryInfC{$(\lambda x.M)N \to_{1} M[x \coloneqq N]$}
+   \DisplayProof}\\\\
+   \AxiomC{$M \to_{1} M'$}
+   \RightLabel{AppL}
+   \UnaryInfC{$MN \to_{1} M'N$}
+   \DisplayProof &
+   \AxiomC{$N \to_{1} N'$}
+   \RightLabel{AppR}
+   \UnaryInfC{$MN \to_{1} MN'$}
+   \DisplayProof &
+   \AxiomC{$M \to_{1} M'$}
+   \RightLabel{Lam}
+   \UnaryInfC{$\lambda x.M \to_{1} \lambda x.M'$}
+   \DisplayProof
+  \end{tabular}
+\end{center}
+
+以上の規則にしたがって$M \to_{1} N$が導かれるとき、$M \to_{1 \beta} N$と書く。
+
+簡約の具体例を確認しよう。
+
+\begin{align*}
+  (\lambda x.x)(\lambda y.y) &\to_{1 \beta} (\lambda y.y)(\lambda y.y)\\
+                            &\to_{1 \beta} \lambda y.y
+\end{align*}
+
+この列の右端の$\lambda y.y$のように
+これ以上$\beta$-簡約できないラムダ項を$\beta$-正規形という。
+
+$\beta$-簡約、$\beta$-正規形をそれぞれ簡単に簡約、正規形ということがある。
+
+$\beta$-簡約で連なるラムダ項の列を
+\textgt{$\beta$-簡約列} ($\beta$-reduction sequence) という。
+
+\[M_1 \to_{1 \beta} M_2 \to_{1 \beta} M_3 \to_{1 \beta} \cdots \to_{1 \beta} M \]
+うえの$\beta$-簡約列のように、
+$M_1$と$M$とを結ぶラムダ項の列で隣り合うラムダ項間に
+二項関係$\to_{1 \beta}$が成立しているとき、
+$M_1 \to_{\beta} M$と書く。
+
+
+
+\begin{exer}
+つぎのラムダ項を求めよ。
+
+\begin{enumerate}
+  \item $( \lambda y.x (\lambda x.x ))[x \coloneqq ( \lambda x.xy)]$
+  \item $(y ( \lambda z.zy))[y \coloneqq ( \lambda x.xz)]$
+\end{enumerate}
+\end{exer}
+
+\begin{exer}
+つぎのラムダ項を$\beta$-簡約してその性質を考えよ。
+
+\begin{enumerate}
+  \item $( \lambda x.xx)( \lambda x.xx)$
+  \item $( \lambda fx.x)MN$
+  \item $( \lambda fx.f(f(f(fx))))MN$
+  \item $( \lambda nfx. f(nfx))( \lambda fx.f(f(f(f(x)))))$
+\end{enumerate}
+
+\end{exer}
+
+
+\end{document}
