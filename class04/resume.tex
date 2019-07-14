@@ -100,7 +100,7 @@ $x$に$2^x$を対応させる関数は、
 $twice( \lambda (x) 2^x , 3)$の値を求めよう。
 
 \begin{align*}
-  twice( \lambda (x) 2^x ) &= ( \lambda (x) 2^x ( \lambda (x) 2^x )(3))\\
+  twice( \lambda (x) 2^x ,3) &= ( \lambda (x) 2^x ( \lambda (x) 2^x )(3))\\
                            &= ( \lambda (x) 2^x ) (2^3)\\
                            &= ( \lambda (x) 2^x ) (8)\\
                            &= 2^8\\
@@ -217,7 +217,7 @@ $\beta$-簡約は、
 簡約の具体例を確認しよう。
 
 \begin{align*}
-  (\lambda x.x)(\lambda y.y) &\to_{1 \beta} (\lambda y.y)(\lambda y.y)\\
+  (\lambda x.xx)(\lambda y.y) &\to_{1 \beta} (\lambda y.y)(\lambda y.y)\\
                             &\to_{1 \beta} \lambda y.y
 \end{align*}
 
